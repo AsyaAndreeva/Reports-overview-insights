@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { fetchInsights } from "../../api/api";
 import { FadeIn } from "../atoms/FadeIn";
 import { InsightGrid } from "../organisms/InsightGrid";
 import { EngagementChart } from "../organisms/EngagementChart";
@@ -10,17 +11,18 @@ export const ScreenB = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3001/insights")
-      .then((res) => res.json())
-      .then((response) => {
-        setData(response);
-        setLoading(false);
+    fetchInsights()
+      .then((response: unknown) => {
+        setTimeout(() => {
+          setData(response as InsightsData);
+          setLoading(false);
+        }, 500);
       })
-      .catch((err) => console.error(err));
+      .catch((err: unknown) => console.error(err));
   }, []);
 
   if (loading || !data) {
-    return <div className="h-screen bg-background p-6 md:p-12 text-white">Loading...</div>;
+    return <div className="min-h-screen bg-background p-6 md:p-12" />;
   }
 
   return (
