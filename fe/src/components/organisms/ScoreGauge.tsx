@@ -1,10 +1,10 @@
-import { CircularLoader } from "../atoms/CircularLoader";
+import { CircularLoader } from "../atoms/Overview/CircularLoader";
 import { ScoreLabel } from "../molecules/ScoreLabel";
 
 interface ScoreGaugeProps {
   percentage: number;
   status: string;
-  size?: number; // Size of the ring itself
+  size?: number;
 }
 
 export const ScoreGauge = ({

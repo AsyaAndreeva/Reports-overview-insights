@@ -6,17 +6,17 @@ export interface OverviewData {
   averageScore: number;
 }
 
-
 export interface InsightBlock {
   id: number;
   title: string;
   value: string;
   change: string;
   visual: {
-    type: "sparkline-sharp" | "sparkline-smooth" | "radial";
-    data?: number[]; 
-    current?: number; 
-    max?: number;     
+    type: "sparkline-sharp" | "sparkline-smooth" | "bar" | "radial";
+    data?: number[];
+    value?: number;
+    current?: number;
+    max?: number;
   };
 }
 

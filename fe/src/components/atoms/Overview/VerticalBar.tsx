@@ -1,7 +1,7 @@
 interface VerticalBarProps {
   percentage: number;
   colorClass: string;
-  delay?: string; 
+  delay?: string;
 }
 
 export const VerticalBar = ({

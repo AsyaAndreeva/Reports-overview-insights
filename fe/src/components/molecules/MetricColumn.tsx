@@ -1,4 +1,4 @@
-import { VerticalBar } from "../atoms/VerticalBar";
+import { VerticalBar } from "../atoms/Overview/VerticalBar";
 
 interface MetricColumnProps {
   value: number;

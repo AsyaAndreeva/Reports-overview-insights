@@ -42,14 +42,13 @@ const insightsData = {
       }
     },
     {
-      id: 3,
+     id: 3,
       title: "Completion Rate",
       value: "85%",
       change: "Stable",
       visual: {
-        type: "radial", 
-        current: 85,
-        max: 100
+        type: "bar", 
+        data: [40, 60, 75, 65, 85, 70]
       }
     }
   ],
@@ -67,8 +66,8 @@ const insightsData = {
   },
 
   navigation: {
-    previous: "Overview", 
-    next: "Operational Efficiency" 
+    previous: "Back", 
+    next: "Next Insight" 
   }
 };
 
