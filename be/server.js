@@ -11,8 +11,9 @@ app.use(cors());
 const overviewData = {
   sectionTitle: "Strategy in Action",
   score: 54,
-  status: "Average",
-  benchmark: "15% below benchmark"
+  status: "Critical",
+  benchmark: "15% below benchmark",
+  averageScore: 69,
 };
 
 

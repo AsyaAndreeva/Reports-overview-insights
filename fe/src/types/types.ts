@@ -3,6 +3,7 @@ export interface OverviewData {
   score: number;
   status: string;
   benchmark: string;
+  averageScore: number;
 }
 
 

@@ -4,7 +4,8 @@ import { fetchOverview } from "../../api/api";
 import { Header } from "../atoms/Header";
 import { Link } from "react-router-dom";
 import { FadeIn } from "../atoms/FadeIn";
-
+import { ScoreGauge } from "../organisms/ScoreGauge";
+import { ComparativeChart } from "../organisms/ComparativeChart";
 
 export const ScreenA = () => {
   const [data, setData] = useState<OverviewData | null>(null);
@@ -21,37 +22,40 @@ export const ScreenA = () => {
       .catch((err: unknown) => console.error(err));
   }, []);
 
-
   if (loading || !data) {
     return <div className="min-h-screen bg-background p-6 md:p-12" />;
   }
 
-
   return (
     <div className="min-h-screen bg-background p-6 md:p-12 flex flex-col">
-      <div className="max-w-4xl mx-auto w-full flex-grow">
-        
+      <div className="max-w-7xl mx-auto w-full flex-grow">
         <FadeIn>
-          <div className="flex justify-between items-start mb-6">
+          <div className="flex justify-between items-center mb-12">
             <Header title={data.sectionTitle} />
+
+            <Link
+              to="/insights"
+              className="px-6 py-3 bg-surface border border-gray-700 rounded-lg hover:border-primary transition-colors hover:text-primary text-white"
+            >
+              Next Insight &rarr;
+            </Link>
           </div>
         </FadeIn>
 
         <FadeIn delay={100}>
-            <div className="mt-8 border border-gray-800 h-64 rounded flex items-center justify-center text-muted">
-         
+          <div className="flex w-full gap-6">
+            <div className="w-1/2">
+              <ScoreGauge percentage={data.score} status={data.status} />
             </div>
-        </FadeIn>
-      </div>
 
-      <div className="max-w-4xl mx-auto w-full mt-12 flex justify-end">
-        <FadeIn delay={200}>
-          <Link
-            to="/insights"
-            className="px-6 py-3 bg-surface border border-gray-700 rounded-lg hover:border-primary transition-colors hover:text-primary text-white"
-          >
-            Next Insight &rarr;
-          </Link>
+            <div className="w-1/2">
+              <ComparativeChart
+                score={data.score}
+                average={data.averageScore}
+                subHeader={data.benchmark}
+              />
+            </div>
+          </div>
         </FadeIn>
       </div>
     </div>
