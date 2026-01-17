@@ -1,0 +1,39 @@
+export interface OverviewData {
+  sectionTitle: string;
+  score: number;
+  status: string;
+  benchmark: string;
+}
+
+
+export interface InsightBlock {
+  id: number;
+  title: string;
+  value: string;
+  change: string;
+  visual: {
+    type: "sparkline-sharp" | "sparkline-smooth" | "radial";
+    data?: number[]; 
+    current?: number; 
+    max?: number;     
+  };
+}
+
+export interface InsightsData {
+  headline: string;
+  insightBlocks: InsightBlock[];
+  mainChart: {
+    type: string;
+    title: string;
+    labels: string[];
+    values: number[];
+    highlightPoint: {
+      index: number;
+      label: string;
+    };
+  };
+  navigation: {
+    previous: string | null;
+    next: string | null;
+  };
+}
