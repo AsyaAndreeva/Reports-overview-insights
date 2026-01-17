@@ -74,13 +74,13 @@ const insightsData = {
 app.get('/overview', (req, res) => {
   setTimeout(() => {
     res.json(overviewData);
-  }, 600); 
+  }); 
 });
 
 app.get('/insights', (req, res) => {
   setTimeout(() => {
     res.json(insightsData);
-  }, 600);
+  });
 });
 
 
