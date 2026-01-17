@@ -12,14 +12,14 @@ interface EngagementChartProps {
 
 export const EngagementChart = ({ data }: EngagementChartProps) => {
   return (
-    <div className="w-full h-full bg-gray-900/40 border border-gray-800 rounded-2xl p-6 flex flex-col relative">
-      <h3 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-4 flex-shrink-0">
+    <div className="w-full h-full bg-gray-900/40 border border-gray-800 rounded-2xl p-6 md:p-8 flex flex-col">
+      <h3 className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-8 flex-shrink-0">
         {data.title}
       </h3>
 
-      <div className="relative w-full flex-1 min-h-0">
+      <div className="relative w-full flex-1 min-h-[300px] mb-8">
         <svg
-          className="absolute inset-0 w-full h-full overflow-visible"
+          className="absolute inset-0 w-full h-full"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
@@ -39,28 +39,29 @@ export const EngagementChart = ({ data }: EngagementChartProps) => {
             d={createSmoothPath(data.values, false)}
             fill="none"
             stroke="#f5841f"
-            strokeWidth="3"
+            strokeWidth="0.5"
             vectorEffect="non-scaling-stroke"
           />
         </svg>
         {data.highlightPoint && (
           <div
-            className="absolute top-0 bottom-0 pointer-events-none flex flex-col items-center"
+            className="absolute bottom-0 pointer-events-none flex flex-col items-center"
             style={{
               left: `${(data.highlightPoint.index / (data.values.length - 1)) * 100}%`,
               transform: "translateX(-50%)",
+              top: 0,
             }}
           >
-            <div className="mb-2 whitespace-nowrap">
-              <span className="text-xs font-bold text-white bg-gray-900/80 px-2 py-1 rounded shadow-sm border border-gray-700">
+            <div className="mb-3 whitespace-nowrap">
+              <span className="text-xs font-bold text-white bg-gray-900 px-3 py-1.5 rounded border border-gray-700">
                 {data.highlightPoint.label}
               </span>
             </div>
 
-            <div className="flex-grow w-px border-l border-dashed border-white/50"></div>
+            <div className="flex-grow w-px border-l border-dashed border-white/40"></div>
 
             <div
-              className="absolute w-3 h-3 bg-white border-2 border-gray-800 rounded-full"
+              className="absolute w-3 h-3 bg-white border-2 border-gray-900 rounded-full shadow-lg"
               style={{
                 top: `${100 - data.values[data.highlightPoint.index]}%`,
                 transform: "translateY(-50%)",
@@ -70,7 +71,7 @@ export const EngagementChart = ({ data }: EngagementChartProps) => {
         )}
       </div>
 
-      <div className="w-full flex justify-between text-xs text-gray-500 font-medium mt-4 pt-2 border-t border-gray-800/50 flex-shrink-0">
+      <div className="w-full flex justify-between text-xs text-gray-500 font-medium flex-shrink-0">
         {data.labels.map((lbl, i) => (
           <span key={i}>{lbl}</span>
         ))}

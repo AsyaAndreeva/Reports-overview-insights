@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#09090b", // Dark background
-        surface: "#18181b",    // Card background
-        primary: "#ea580c",    // Orange
-        muted: "#71717a",      // Grey text
+        background: "#09090b", 
+        surface: "#18181b",    
+        primary: "#ea580c",    
+        muted: "#71717a",      
       }
     },
   },

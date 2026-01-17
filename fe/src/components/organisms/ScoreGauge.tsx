@@ -10,10 +10,10 @@ interface ScoreGaugeProps {
 export const ScoreGauge = ({
   percentage,
   status,
-  size = 560,
+  size = 500,
 }: ScoreGaugeProps) => {
   return (
-    <div className="relative w-full h-full min-h-[500px] flex items-center justify-center bg-gray-900/40 border border-gray-800 rounded-2xl">
+    <div className="relative w-full h-full flex items-center justify-center rounded-2xl">
       <div
         className="relative flex items-center justify-center"
         style={{ width: size, height: size }}

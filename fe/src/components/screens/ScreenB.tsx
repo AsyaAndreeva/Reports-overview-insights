@@ -20,45 +20,42 @@ export const ScreenB = () => {
   }, []);
 
   if (loading || !data) {
-    return (
-      <div className="h-screen bg-background p-6 md:p-12 text-white">
-        Loading...
-      </div>
-    );
+    return <div className="h-screen bg-background p-6 md:p-12 text-white">Loading...</div>;
   }
 
   return (
-    <div className="h-screen bg-background p-6 md:p-12 flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-background p-6 md:p-8 flex flex-col overflow-y-auto pb-10">
       <div className="max-w-7xl mx-auto w-full h-full flex flex-col">
+        
         <FadeIn>
-          <div className="mb-6">
-            <div className="flex justify-between items-center mb-4">
-              <Link
-                to="/"
-                className="text-gray-400 hover:text-white transition-colors text-sm font-medium flex items-center gap-2"
+          <div className="flex justify-between items-start mb-4">
+            <div className="flex flex-col gap-2">
+              <Link 
+                to="/" 
+                className="text-gray-400 hover:text-white transition-colors text-sm font-medium flex items-center gap-2 w-fit"
               >
                 &larr; {data.navigation.previous}
               </Link>
-
-              {data.navigation.next && (
-                <Link
-                  to="#"
-                  className="text-gray-400 hover:text-white transition-colors text-sm font-medium flex items-center gap-2"
-                >
-                  {data.navigation.next} &rarr;
-                </Link>
-              )}
+              
+              <h1 className="text-2xl md:text-3xl font-light text-white tracking-wide">
+                {data.headline}
+              </h1>
             </div>
 
-            <h1 className="text-3xl font-light text-white tracking-wide">
-              {data.headline}
-            </h1>
+            {data.navigation.next && (
+              <Link 
+                to="#" 
+                className="text-gray-400 hover:text-white transition-colors text-sm font-medium flex items-center gap-2 w-fit"
+              >
+                {data.navigation.next} &rarr;
+              </Link>
+            )}
           </div>
         </FadeIn>
 
         <FadeIn delay={100}>
-          <div className="mb-6">
-            <InsightGrid blocks={data.insightBlocks} />
+          <div className="mb-4">
+             <InsightGrid blocks={data.insightBlocks} />
           </div>
         </FadeIn>
 
@@ -67,6 +64,7 @@ export const ScreenB = () => {
             <EngagementChart data={data.mainChart} />
           </div>
         </FadeIn>
+
       </div>
     </div>
   );
